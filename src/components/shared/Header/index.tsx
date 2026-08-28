@@ -1,10 +1,12 @@
-import { Clock, TrendingUp, Wallet } from 'lucide-react'
+import { Clock, Moon, Sun, TrendingUp, Wallet } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 
 import { Button } from '@/components/shared/Button'
+import { useTheme } from '@/hooks/useTheme'
 
 export function Header() {
   const navigate = useNavigate()
+  const { theme, toggleTheme } = useTheme()
 
   return (
     <header className="border-b border-(--border) px-6 py-3">
@@ -33,6 +35,12 @@ export function Header() {
           >
             <span className="hidden sm:inline">Histórico</span>
           </Button>
+          <Button
+            aria-label={`Alterar tema ${theme === 'light' ? 'escuro' : 'claro'}`}
+            variant="ghost"
+            icon={theme === 'light' ? Moon : Sun}
+            onClick={toggleTheme}
+          />
         </div>
       </nav>
     </header>
