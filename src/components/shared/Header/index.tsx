@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom'
 import { Button } from '@/components/shared/Button'
 import { useTheme } from '@/hooks/useTheme'
 
+import { Divider } from '../Divider'
+
 export function Header() {
   const navigate = useNavigate()
   const { theme, toggleTheme } = useTheme()
@@ -43,6 +45,7 @@ export function Header() {
           />
         </div>
       </nav>
+      <Divider orientation="vertical" />
     </header>
   )
 }
