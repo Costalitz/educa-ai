@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { Button } from '@/components/shared/Button'
 import { useTheme } from '@/hooks/useTheme'
 
-import { Divider } from '../Divider'
+import { Divider } from '../../UI/Divider'
 
 export function Header() {
   const navigate = useNavigate()
