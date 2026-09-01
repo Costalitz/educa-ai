@@ -1,14 +1,41 @@
+import { useState } from 'react'
+
 import { FormStep } from '@/components/features/Simulation/FormStep'
 import { StepProgress } from '@/components/features/Simulation/Progress'
 import { simulationFormSteps } from '@/data/simulation'
 
 export const SimulationForm = () => {
-  const currentStep = simulationFormSteps[0]
+  const [currentStepIndex, setCurrentStepIndex] = useState(0)
+  const totalSteps = simulationFormSteps.length
+  const currentStep = simulationFormSteps[currentStepIndex]
+
+  const handleNextStep = () => {
+    if (currentStepIndex + 1 > totalSteps - 1) {
+      return
+    }
+    setCurrentStepIndex((prevIndex) => prevIndex + 1)
+  }
+
+  const handlePreviousStep = () => {
+    if (currentStepIndex === 0) {
+      return
+    }
+    setCurrentStepIndex((prevIndex) => prevIndex - 1)
+  }
 
   return (
     <>
-      <StepProgress currentStep={1} totalSteps={simulationFormSteps.length} />
-      <FormStep key={currentStep.id} {...currentStep} />
+      <StepProgress
+        currentStep={currentStepIndex + 1}
+        totalSteps={totalSteps}
+      />
+      <FormStep
+        key={currentStep.id}
+        {...currentStep}
+        onNext={handleNextStep}
+        onPrevious={handlePreviousStep}
+        hideBackButton={currentStepIndex === 0}
+      />
     </>
   )
 }
