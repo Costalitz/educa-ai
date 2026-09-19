@@ -7,9 +7,9 @@ import {
   Wallet,
 } from 'lucide-react'
 
-import type { FormStepProps } from '../components/features/Simulation/FormStep'
+import type { FormStepData } from '../components/features/Simulation/FormStep'
 
-export const simulationFormSteps: FormStepProps[] = [
+export const simulationFormSteps: FormStepData[] = [
   {
     id: 'income',
     icon: PiggyBank,
@@ -85,3 +85,8 @@ export const simulationFormSteps: FormStepProps[] = [
     },
   },
 ]
+
+export type SimulationFormData = Record<
+  (typeof simulationFormSteps)[number]['id'],
+  string
+>
